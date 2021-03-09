@@ -1,0 +1,86 @@
+<div class="container ">
+    <form [formGroup]="signUpForm" (submit)="submit()">
+        <nav class="navbar navbar-light bg-light">
+            <!-- <div class="container"> -->
+            <a class="navbar-brand" href="#">
+                <img src="assets\images\logo.png" alt="" width="30" height="24">
+            </a>
+            <!-- </div> -->
+        </nav>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4 ">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput #firstName maxlength="15" formControlName="firstName">
+                        <mat-error *ngIf="signUpForm.controls.firstName.invalid">First name requrired</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput #lastName maxlength="15" formControlName="lastName">
+                        <mat-error *ngIf="signUpForm.controls.firstName.invalid">Last name required</mat-error>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="number" #phone maxlength="10" formControlName="phone">
+                        <mat-error *ngIf="signUpForm.controls.phone.invalid">Phone Number required</mat-error>
+                    </mat-form-field>
+                </p>
+
+                <mat-list>
+                    <mat-divider [vertical]="true"></mat-divider>
+                </mat-list>
+            </div>
+
+            <div class="col-md-4 ">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput #email type="email" formControlName="email">
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <label>Select Gender: </label>
+                    <br>
+                    <mat-radio-group formControlName="gender">
+                        <mat-radio-button value="male" color="primary">Male </mat-radio-button>
+                        <br>
+                        <mat-radio-button value="female" color="primary"> Female</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+
+                <label>Select State: </label>
+                <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="col-md-4 ">
+                    <mat-form-field>
+                        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+            </div>
+
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <!-- <div class="column">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div> -->
+        </div>
+    </form>
+</div>
